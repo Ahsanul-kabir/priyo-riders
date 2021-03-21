@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import SearchResult from '../SearchResult/SearchResult';
 import "./SearchFrom.css"
 // const { register, handleSubmit, watch, errors } = useForm();
@@ -40,7 +39,7 @@ const SearchFrom = () => {
     }
     return (
         <Container>
-            <Row>
+            <Row style={{position:'relative'}}>
                 <Col>
                     <div className="form" style={{ marginTop: '10px', marginBottom: '10px' }}>
                         <form style={{ marginLeft: '10px' }}>
@@ -48,7 +47,7 @@ const SearchFrom = () => {
                                 Pick From
                                 </label>
                             <br />
-                            <input placeholder='Your Destination From' class="form-control form-control-sm" type="text" name="pickFrom" id="pickFrom" onChange={handleFromValue} required/>
+                            <input placeholder='Your Destination From' class="form-control form-control-sm" type="text" name="pickFrom" id="pickFrom" onChange={handleFromValue} />
                             <br />
                             <label htmlFor="pickTo">
                                 Pick To
@@ -56,15 +55,11 @@ const SearchFrom = () => {
                             <br />
                             <input placeholder='Your Destination To' class="form-control form-control-sm" type="text" name="pickTo" id="pickTo" onChange={handleToValue} required/>
                             <br />
-
-
-                            <Link style={{textDecoration: 'none'}} to={`/searchResult`}>
-                            <button>Search</button>
-                                </Link>
+                            <button class="form-control form-control-sm" type="submit" onClick={handleSearch} style={{ marginTop: '5px' }}>Search</button>
                         </form>
 
-                        {/* {show && <SearchResult value={value} fromValue={fromValue} toValue={toValue} />
-                            } */}
+                        {show && <SearchResult value={value} fromValue={fromValue} toValue={toValue} />
+                            }
                     </div>
                     <div className="map">
                         <section class="mt-5 container">

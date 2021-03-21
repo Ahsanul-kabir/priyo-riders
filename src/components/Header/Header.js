@@ -38,6 +38,7 @@ const Header = () => {
                                     <li class="nav-item">
                                         <Link style={loginStyle} to="/login">Login</Link>
                                     </li>
+
                                 </ul>
                             </div>
                         </div>

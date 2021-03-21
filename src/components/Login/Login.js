@@ -2,10 +2,10 @@ import { useContext, useState } from 'react';
 import { UserContext } from "../../App";
 import { Redirect, useHistory, useLocation } from "react-router";
 import { createUserWithEmailAndPassword, handleFbSignIn, handleGoogleSignIn, handleSignOut, initializeLoginFramwork, signInWithEmailAndPassword } from './LoginManager';
-import { Container,Row,Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 function Login() {
-  const [newUser, setnewUser] = useState(false);
+  const [newUser, setnewUser] = useState(true);
   const [user, setUser] = useState({
     isSignIn: false,
     newUser: false,
@@ -87,6 +87,12 @@ function Login() {
     event.preventDefault();
   }
 
+  const inputStyle = {
+    width: '500px',
+    marginBottom: "20px",
+    border: "none",
+    borderBottom: '1px solid #222'
+  }
   return (
 
 
@@ -94,31 +100,20 @@ function Login() {
       <Row>
         <Col>
           <div style={{ textAlign: 'center' }}>
-
-            {/* {
-                user.isSignIn && <div>
-                  <p>Welcome, {user.name}</p>
-                  <p>Your email: {user.email}</p>
-                  <img src={user.photo} alt="" />
-                </div>
-              } */}
-            <h1>Create an account</h1>
-
-            {/* <p>Name: {user.name}</p> */}
-            <input type="checkbox" onChange={() => setnewUser(!newUser)} name="newUser" id="" />
-            <label htmlFor="newUser">New User Sign Up</label>
-
-            <form style={{border:'2px solid orange', marginBottom:'10px'}} action="" onSubmit={handleSubmit}>
-              {newUser && <input type="text" name="name" onBlur={handleChange} placeholder="Your Name" />}
+            <form style={{ border: '2px solid orange', marginBottom: '10px',padding:'20px' }} action="" onSubmit={handleSubmit}>
+              {newUser ? <h1>Create an account</h1> : <h1>Login</h1>}
+              {newUser && <input style={inputStyle} type="text" name="name" onBlur={handleChange} placeholder="Your Name" />}
               <br />
-              <input type="text" name="email" class="form-control form-control-sm" onBlur={handleChange} placeholder="Your Email" required />
+              <input style={inputStyle} type="text" name="email" onBlur={handleChange} placeholder="Your Email" required />
               <br />
               {/* onChange = dile every character console e show korbe && onBlur focus sore gale console e show korbe */}
-              <input type="password" name="password" class="form-control form-control-sm" onBlur={handleChange} placeholder="Enter Password" required />
+              <input style={inputStyle} type="password" name="password" onBlur={handleChange} placeholder="Enter Password" required />
               <br />
-              <input type="password" name="password" class="form-control form-control-sm" onBlur={handleChange} placeholder="Confrim Passowrd" required />
+              <input style={inputStyle} type="password" name="password" onBlur={handleChange} placeholder="Confrim Passowrd" required />
               <br />
-              <p>Already have an account? <input type="submit" value={newUser ? "Sign Up" : "Login"} /></p>
+              <input type="submit" style={{ marginBottom: "20px",backgroundColor:"orange",width:'200px' }} value={newUser ? "Create an account" : "Login"} />
+              {!newUser && <p style={{display:'flex', justifyContent:"center"}}>Don’t have an account? <h6 style={{ cursor: "pointer",textDecoration:'underline' }} onClick={() => setnewUser(true)}> Create an account</h6></p>}
+              {newUser && <p style={{display:'flex', justifyContent:"center"}}>Already have an account? <h6 style={{ cursor: "pointer",textDecoration:'underline' }} onClick={() => setnewUser(false)}> Login</h6></p>}
               <br />
             </form>
             {
