@@ -1,46 +1,29 @@
 import React from 'react';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { data } from '../../data'
+
 const VhicalsCard = () => {
+
     return (
         <div>
             <Container>
-                <Row className='mx-auto' style={{marginTop:'150px'}}>
-                    <Col>
-                        <Card style={{ width: '8rem', height:'15rem', margin:'10px' }}>
-                            <Card.Img variant="top" src={"holder.js/100px180"} />
-                            <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card style={{ width: '8rem', height:'15rem', margin:'10px' }}>
-                            <Card.Img variant="top" src="holder.js/100px180" />
-                            <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card style={{ width: '8rem', height:'15rem',margin:'10px' }}>
-                            <Card.Img variant="top" src="holder.js/100px180" />
-                            <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card style={{ width: '8rem', height:'15rem', margin:'10px'}}>
-                            <Card.Img variant="top" src="holder.js/100px180" />
-                            <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
+                <Row className='mx-auto' style={{ marginTop: '150px' }}>
+                    {
+                        data.map((item) => {
+                            const { id, name, description, image } = item
+                            return <Col>
+                                <Link to='/destination'>
+                                    <Card style={{ width: '8rem', height: '10rem', margin: '10px' }}>
+                                        <Card.Img variant="top" src={image} />
+                                        <Card.Body>
+                                            <Card.Title>{name}</Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
+                            </Col>
+                        })
+                    }
                 </Row>
             </Container>
 
