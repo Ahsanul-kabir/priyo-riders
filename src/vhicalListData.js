@@ -1,4 +1,4 @@
-export const data = [
+export const vhicalListData = [
     {
         "id": 1,
         "name": "Bike",

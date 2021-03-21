@@ -1,5 +1,6 @@
 import React from 'react';
-import SearchFrom from './SearchFrom/SearchFrom';
+import SearchFrom from '../SearchFrom/SearchFrom';
+
 
 const Destination = () => {
     return (
