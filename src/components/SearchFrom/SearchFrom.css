@@ -1,4 +1,16 @@
 .form{
     width: 50%;
     background-color: rgba(189, 197, 159, 0.835);
+    border-radius: 5%;
+    padding: 5%;
+    float: left;;
+}
+.form button{
+    color: aliceblue;
+    background-color: brown;
+}
+.map{
+    width: 50%;
+    border-radius: 5%;
+    float: left;;
 }

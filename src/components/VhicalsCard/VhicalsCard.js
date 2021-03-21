@@ -13,7 +13,7 @@ const VhicalsCard = () => {
                         vhicalListData.map((item) => {
                             const { id, name, description, image } = item
                             return <Col>
-                                <Link to={`/destination/${id}`}>
+                                <Link style={{textDecoration: 'none'}} to={`/destination/${id}`}>
                                     <Card style={{ width: '8rem', height: '10rem', margin: '10px' }}>
                                         <Card.Img variant="top" src={image} />
                                         <Card.Body>

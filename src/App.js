@@ -12,38 +12,45 @@ import DestinationDescription from './components/DestinationDescription/Destinat
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
-// import logo from './logo.svg';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import SearchResult from './components/SearchResult/SearchResult';
 
+export const UserContext = createContext();
 function App() {
-
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <h3>email: {loggedInUser.email}</h3>
     <Router>
       <Header></Header>
       <Switch>
         <Route path='/home'>
           <Home></Home>
         </Route>
-
-        <Route path='/destination/:id'>
+        <PrivateRoute path='/destination/:id'>
           <Destination></Destination>
-        </Route>
-        <Route path='/destination'>
+        </PrivateRoute>
+        <PrivateRoute path='/destination'>
           <DestinationDescription></DestinationDescription>
-        </Route>
-        <Route path='/blog'>
+        </PrivateRoute>
+        <PrivateRoute path='/blog'>
           <Blog></Blog>
-        </Route>
-        <Route path='/contact'>
+        </PrivateRoute>
+        <PrivateRoute path='/contact'>
           <Contact></Contact>
-        </Route>
+        </PrivateRoute>
         <Route path='/login'>
           <Login></Login>
+        </Route>
+        <Route path='/searchResult'>
+          <SearchResult></SearchResult>
         </Route>
         <Route exact path='/'>
           <Home></Home>
         </Route>
       </Switch>
     </Router>
+    </UserContext.Provider>
   );
 }
 

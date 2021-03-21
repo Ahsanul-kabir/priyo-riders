@@ -2,6 +2,15 @@ import React from 'react';
 import {Button, Row, Container, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 const Header = () => {
+    const loginStyle = {
+        width : '8px',
+        height: '8px',
+        textDecoration: 'none',
+        backgroundColor: 'orange',
+        padding:'5px',
+        color: 'white',
+        borderRadius:'5px'
+    }
     return (
         <Container>
             <Row>
@@ -27,7 +36,7 @@ const Header = () => {
                                         <Link class="nav-link" to="/contact">Contact</Link>
                                     </li>
                                     <li class="nav-item">
-                                        <Link><Button className='primary' to="/login">Login</Button></Link>
+                                        <Link style={loginStyle} to="/login">Login</Link>
                                     </li>
                                 </ul>
                             </div>
